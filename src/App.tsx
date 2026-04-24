@@ -1,16 +1,37 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import Lenis from 'lenis';
 import Navbar from './components/Navbar';
-import Hero from './sections/Hero';
-import Services from './sections/Services';
-import Portfolio from './sections/Portfolio';
-import Team from './sections/Team';
-import Contact from './sections/Contact';
+import Home from './pages/Home';
+import FounderDetail from './pages/FounderDetail';
 import Footer from './components/Footer';
+import Loader from './components/Loader';
+import CustomCursor from './components/CustomCursor';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    const lenis = new Lenis();
+    // Only init Lenis after loading to prevent scrolling while loader is active
+    if (loading) {
+      document.body.style.overflow = 'hidden';
+      return;
+    }
+    
+    document.body.style.overflow = 'unset';
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
 
     function raf(time: number) {
       lenis.raf(time);
@@ -22,20 +43,27 @@ function App() {
     return () => {
       lenis.destroy();
     };
-  }, []);
+  }, [loading]);
 
   return (
-    <div className="min-h-screen bg-bg text-cream selection:bg-vex-green selection:text-bg">
-      <Navbar />
-      <main>
-        <Hero />
-        <Services />
-        <Portfolio />
-        <Team />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <ScrollToTop />
+      <CustomCursor />
+      <div className="min-h-screen bg-bg text-cream selection:bg-vex-green selection:text-bg">
+        <AnimatePresence>
+          {loading && <Loader onComplete={() => setLoading(false)} />}
+        </AnimatePresence>
+        
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/equipo/:id" element={<FounderDetail />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 

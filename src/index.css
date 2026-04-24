@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,300;1,14..32,400&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,28 +9,89 @@
 }
 
 body {
-  @apply bg-bg text-cream font-body antialiased selection:bg-vex-green selection:text-bg;
+  @apply bg-bg text-cream font-body antialiased;
   overflow-x: hidden;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+  a, button, input, textarea, select {
+    cursor: none !important;
+  }
 }
 
-::-webkit-scrollbar-track {
-  @apply bg-bg;
-}
+/* ═══════ Scrollbar ═══════ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { @apply bg-transparent; }
+::-webkit-scrollbar-thumb { @apply bg-vex-green/20 rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-vex-green/40; }
 
-::-webkit-scrollbar-thumb {
-  @apply bg-vex-green/20 rounded-full hover:bg-vex-green/40 transition-colors;
-}
-
-/* Utils */
+/* ═══════ Utilities ═══════ */
 .glass {
-  @apply bg-bg/75 backdrop-blur-xl saturate-150;
+  @apply bg-bg/60 backdrop-blur-2xl border border-white/[0.06];
+}
+
+.glass-strong {
+  @apply bg-bg-secondary/80 backdrop-blur-3xl border border-white/[0.08] shadow-2xl;
 }
 
 .text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-vex-green to-vex-violet;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-vex-green via-vex-green-light to-vex-violet;
+}
+
+.text-gradient-subtle {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-cream to-cream-muted;
+}
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.dot-pattern {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ═══════ Section Label ═══════ */
+.section-label {
+  @apply inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.35em] font-mono font-medium;
+}
+
+.section-label::before {
+  content: '';
+  @apply block w-8 h-px bg-vex-green;
+}
+
+/* ═══════ Card hover glow ═══════ */
+.card-glow {
+  position: relative;
+}
+
+.card-glow::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(0,245,135,0.15), transparent 50%, rgba(139,92,246,0.15));
+  opacity: 0;
+  transition: opacity 0.5s;
+  z-index: -1;
+}
+
+.card-glow:hover::before {
+  opacity: 1;
+}
+
+/* ═══════ Smooth Focus ═══════ */
+input:focus, textarea:focus, select:focus {
+  @apply ring-1 ring-vex-green/30 border-vex-green/40;
+}
+
+::selection {
+  @apply bg-vex-green/30 text-cream;
 }
