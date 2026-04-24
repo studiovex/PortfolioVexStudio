@@ -24,10 +24,6 @@ jobs:
       - name: 🏗️ Build project
         run: npm run build
 
-      - name: 🔍 Debug FTP Connection and Directory
-        run: |
-          curl -v --ftp-ssl -u "${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}" ftp://${{ secrets.FTP_SERVER }}/
-
       - name: 🚀 Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
