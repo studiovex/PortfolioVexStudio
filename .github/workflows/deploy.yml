@@ -27,4 +27,4 @@ jobs:
       - name: 🚀 Deploy to Hostinger via FTP
         run: |
           sudo apt-get install -y lftp
-          lftp -c "open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }}; pwd; ls -la; echo '---'; ls -la domains/; echo '---'; ls -la public_html/"
+          lftp -c "set ftp:ssl-allow no; open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }}; pwd; ls -la; echo 'LISTING DOMAINS:'; ls -la domains/ || echo 'no domains dir'; echo 'LISTING PUBLIC_HTML:'; ls -la public_html/ || echo 'no public_html dir'"
