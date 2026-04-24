@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from './Button';
 import { Menu, X } from 'lucide-react';
@@ -30,7 +30,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <a href="#inicio" className="group">
-          <img src="/public/imagenes/logo/logo sin fondo.png" alt="Vex Studio" className="h-8 w-auto filter invert group-hover:opacity-80 transition-opacity" />
+          <img src="/imagenes/logo/logo sin fondo.png" alt="Vex Studio" className="h-8 w-auto filter invert group-hover:opacity-80 transition-opacity" />
         </a>
 
         {/* Desktop Nav */}

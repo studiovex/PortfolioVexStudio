@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Instagram, Mail, Phone, ArrowUp } from 'lucide-react';
 
 const Footer = () => {
@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-12 mb-16">
           <div className="text-center md:text-left">
-            <img src="/public/imagenes/logo/logo sin fondo.png" alt="Vex Studio" className="h-10 w-auto filter invert mb-6 mx-auto md:mx-0" />
+            <img src="/imagenes/logo/logo sin fondo.png" alt="Vex Studio" className="h-10 w-auto filter invert mb-6 mx-auto md:mx-0" />
             <p className="text-cream-muted max-w-xs font-light">
               Construyendo el futuro digital con ingeniería de precisión y diseño inmersivo.
             </p>

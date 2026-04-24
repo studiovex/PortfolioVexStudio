@@ -1,7 +1,7 @@
-import React from 'react';
+
 import { motion } from 'framer-motion';
 import Button from '../components/Button';
-import { Github, Linkedin, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
 const founders = [
   {
