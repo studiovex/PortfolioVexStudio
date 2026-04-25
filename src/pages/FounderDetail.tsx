@@ -6,7 +6,7 @@ import { ArrowLeft, CheckCircle2, Globe, FileText, User, ArrowRight } from 'luci
 
 const FounderDetail = () => {
   const { id } = useParams();
-  const founder = CONTENT.team.founders.find(f => f.id === id);
+  const founder = CONTENT.team.members.find(f => f.id === id);
 
   if (!founder) {
     return (
@@ -27,7 +27,7 @@ const FounderDetail = () => {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-20">
           {/* Left: Content (3 cols) */}
           <div className="lg:col-span-3">
-            <span className="section-label text-vex-green mb-8 block">Cofundador · {founder.shortRole}</span>
+            <span className="section-label text-vex-green mb-8 block">{founder.type} · {founder.shortRole}</span>
             <h1 className="font-display font-extrabold text-5xl md:text-7xl lg:text-8xl tracking-tight leading-[0.88] mb-10">
               {founder.name.split(' ')[0]}{' '}
               <span className="text-gradient">{founder.name.split(' ')[1]}</span>

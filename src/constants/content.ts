@@ -155,17 +155,18 @@ export const CONTENT = {
   },
 
   team: {
-    label: "04 — Liderazgo",
+    label: "04 — Equipo",
     title: "Las mentes detrás",
     titleHighlight: "de cada solución.",
-    subtitle: "Cofundadores con visión de producto y ejecución técnica de primer nivel.",
-    founders: [
+    subtitle: "Un equipo multidisciplinario con visión de producto y ejecución técnica de primer nivel.",
+    members: [
       {
         name: "Nicolas Aguirres",
         id: "nicolas-aguirres",
+        type: "Cofundador",
         role: "Fullstack Developer & Co-founder",
         shortRole: "Fullstack Developer",
-        bio: "Desarrollador fullstack con dominio en frontend, backend y desarrollo potenciado por IA. Lidera la arquitectura técnica de cada proyecto en Vex Studio.",
+        bio: "Desarrollador fullstack with dominio en frontend, backend y desarrollo potenciado por IA. Lidera la arquitectura técnica de cada proyecto en Vex Studio.",
         skills: ["React", "Node.js", "Desarrollo con IA"],
         fullBio: "Nicolas es el motor técnico de Vex Studio. Con un dominio completo del stack de desarrollo — desde maquetación y diseño frontend hasta lógica de servidor y bases de datos — construye productos digitales de principio a fin. Su enfoque en el desarrollo asistido por inteligencia artificial le permite acelerar entregas y crear soluciones que normalmente requerirían equipos más grandes. Como Technical Lead, cada decisión técnica pasa por su criterio.",
         experience: [
@@ -180,6 +181,7 @@ export const CONTENT = {
       {
         name: "Nicolás Ozan",
         id: "nicolas-ozan",
+        type: "Cofundador",
         role: "Fullstack Developer & Designer · Co-founder",
         shortRole: "Fullstack & Designer",
         bio: "Fusiona diseño y código en cada proyecto. Desarrollador fullstack con ojo de diseñador, crea experiencias visuales que funcionan por dentro y por fuera.",
@@ -193,6 +195,24 @@ export const CONTENT = {
         stack: ["HTML", "CSS", "JavaScript", "PHP", "SQL", "Figma", "Bootstrap", "IA"],
         portfolio: "",
         cv: "",
+      },
+      {
+        name: "Mauricio Velazquez",
+        id: "mauricio-velazquez",
+        type: "Especialista",
+        role: "Backend Developer & Database Specialist",
+        shortRole: "Database Specialist",
+        bio: "Especialista en arquitecturas de backend y gestión de bases de datos. Optimiza procesos y asegura la escalabilidad de cada sistema que construimos.",
+        skills: ["PostgreSQL", "Node.js", "Python"],
+        fullBio: "Mauricio es el experto en datos de Vex Studio. Con una sólida formación en desarrollo fullstack y una especialización profunda en bases de datos relacionales y no relacionales, se encarga de que la infraestructura de nuestros proyectos sea robusta, segura y eficiente. Su enfoque en la optimización de procesos y el trabajo bajo metodologías ágiles garantiza soluciones de backend de alta calidad.",
+        experience: [
+          { title: "Gestión de Bases de Datos", desc: "Diseño y optimización de arquitecturas de datos complejas utilizando PostgreSQL, MongoDB y MySQL." },
+          { title: "Arquitecturas de Servidor", desc: "Desarrollo de APIs robustas y eficientes con Node.js y Python (Django/Flask)." },
+          { title: "Infraestructura & DevOps", desc: "Implementación de contenedores con Docker y despliegue en entornos cloud como AWS." },
+        ],
+        stack: ["PostgreSQL", "MongoDB", "MySQL", "Node.js", "Python", "Docker", "AWS", "React", "Next.js", "TypeScript"],
+        portfolio: "",
+        cv: "/cv/Mauricio_Velazquez_CV.pdf",
       },
     ],
   },

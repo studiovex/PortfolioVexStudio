@@ -29,7 +29,7 @@ const Team = () => {
           </motion.p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {team.founders.map((f, i) => (
+          {team.members.map((f, i) => (
             <motion.div key={f.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: i * 0.2 }} viewport={{ once: true }}
               className="group relative rounded-[2.5rem] bg-bg-card border border-white/[0.04] hover:border-white/10 transition-all duration-700 overflow-hidden">
               <div className="flex flex-col md:flex-row">
