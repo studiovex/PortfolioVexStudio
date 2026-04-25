@@ -88,17 +88,17 @@ const FounderDetail = () => {
             {/* Action buttons */}
             <div className="space-y-3">
               {founder.portfolio && (
-                <Button variant="outline" className="w-full h-14 rounded-2xl" onClick={() => window.open(founder.portfolio, '_blank')}>
+                <Button variant="outline" className="w-full h-14 rounded-2xl" onClick={() => window.location.href = founder.portfolio}>
                   <Globe className="w-4 h-4" /> Ver Portfolio
                 </Button>
               )}
               {founder.cv && (
-                <Button variant="outline" className="w-full h-14 rounded-2xl" onClick={() => window.open(founder.cv, '_blank')}>
+                <Button variant="outline" className="w-full h-14 rounded-2xl" onClick={() => window.location.href = founder.cv}>
                   <FileText className="w-4 h-4" /> Descargar CV
                 </Button>
               )}
               <Button className="w-full h-16 rounded-2xl text-lg font-bold"
-                onClick={() => window.open(CONTENT.agency.whatsapp, '_blank')}>
+                onClick={() => window.open(founder.whatsapp || CONTENT.agency.whatsapp, '_blank')}>
                 Contactar a {founder.name.split(' ')[0]}
                 <ArrowRight className="w-5 h-5" />
               </Button>

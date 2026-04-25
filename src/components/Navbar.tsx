@@ -109,13 +109,27 @@ const Navbar = () => {
                   <Link
                     key={link.name}
                     to={`/${link.href}`}
+                    onClick={() => setIsOpen(false)}
                     className="text-2xl font-display font-bold text-cream hover:text-vex-green transition-colors"
                   >
                     {link.name}
                   </Link>
                 )
               ))}
-              <Button size="lg" className="w-full mt-4">{CONTENT.nav.cta}</Button>
+              <Button 
+                size="lg" 
+                className="w-full mt-4"
+                onClick={() => {
+                  setIsOpen(false);
+                  if (isHome) {
+                    document.querySelector('#contacto')?.scrollIntoView({ behavior: 'smooth' });
+                  } else {
+                    window.location.href = '/#contacto';
+                  }
+                }}
+              >
+                {CONTENT.nav.cta}
+              </Button>
             </div>
           </motion.div>
         )}

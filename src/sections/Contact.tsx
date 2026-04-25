@@ -62,31 +62,45 @@ const Contact = () => {
           <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }}
             className="p-10 md:p-12 rounded-[2.5rem] bg-bg-card border border-white/[0.04] shadow-2xl">
             <h3 className="text-xl font-display font-bold mb-8 text-cream">{contact.formTitle}</h3>
-            <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+            <form 
+              className="space-y-5" 
+              onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.currentTarget);
+                const name = formData.get('name');
+                const message = formData.get('message');
+                const projectType = formData.get('projectType');
+                
+                // Construct WhatsApp message
+                const text = `Hola Vex Studio! Mi nombre es ${name}. Me gustaría consultar por un ${projectType}. ${message}`;
+                const whatsappUrl = `${CONTENT.agency.whatsapp}?text=${encodeURIComponent(text)}`;
+                window.open(whatsappUrl, '_blank');
+              }}
+            >
               <div className="space-y-2">
                 <label className="text-[9px] uppercase tracking-[0.3em] text-cream-dark font-mono">Nombre</label>
-                <input type="text" className="w-full bg-bg border border-white/[0.06] rounded-xl p-4 outline-none transition-all text-cream text-sm placeholder:text-cream-dark" placeholder="Tu nombre" />
+                <input name="name" type="text" required className="w-full bg-bg border border-white/[0.06] rounded-xl p-4 outline-none transition-all text-cream text-sm placeholder:text-cream-dark" placeholder="Tu nombre" />
               </div>
               <div className="space-y-2">
                 <label className="text-[9px] uppercase tracking-[0.3em] text-cream-dark font-mono">Email</label>
-                <input type="email" className="w-full bg-bg border border-white/[0.06] rounded-xl p-4 outline-none transition-all text-cream text-sm placeholder:text-cream-dark" placeholder="tu@email.com" />
+                <input name="email" type="email" required className="w-full bg-bg border border-white/[0.06] rounded-xl p-4 outline-none transition-all text-cream text-sm placeholder:text-cream-dark" placeholder="tu@email.com" />
               </div>
               <div className="space-y-2">
                 <label className="text-[9px] uppercase tracking-[0.3em] text-cream-dark font-mono">Tipo de Proyecto</label>
-                <select className="w-full bg-bg border border-white/[0.06] rounded-xl p-4 outline-none transition-all text-cream text-sm">
+                <select name="projectType" required className="w-full bg-bg border border-white/[0.06] rounded-xl p-4 outline-none transition-all text-cream text-sm">
                   <option value="">Seleccionar...</option>
-                  <option value="web">Desarrollo Web</option>
-                  <option value="system">Sistema a Medida</option>
-                  <option value="ecommerce">E-commerce</option>
-                  <option value="ai">Automatización & IA</option>
-                  <option value="other">Otro</option>
+                  <option value="Desarrollo Web">Desarrollo Web</option>
+                  <option value="Sistema a Medida">Sistema a Medida</option>
+                  <option value="E-commerce">E-commerce</option>
+                  <option value="Automatización & IA">Automatización & IA</option>
+                  <option value="Otro">Otro</option>
                 </select>
               </div>
               <div className="space-y-2">
                 <label className="text-[9px] uppercase tracking-[0.3em] text-cream-dark font-mono">Mensaje</label>
-                <textarea rows={4} className="w-full bg-bg border border-white/[0.06] rounded-xl p-4 outline-none transition-all text-cream text-sm resize-none placeholder:text-cream-dark" placeholder="Contanos sobre tu proyecto..." />
+                <textarea name="message" rows={4} required className="w-full bg-bg border border-white/[0.06] rounded-xl p-4 outline-none transition-all text-cream text-sm resize-none placeholder:text-cream-dark" placeholder="Contanos sobre tu proyecto..." />
               </div>
-              <Button size="lg" className="w-full">
+              <Button type="submit" size="lg" className="w-full">
                 <Send className="w-4 h-4" />
                 {contact.formCta}
               </Button>

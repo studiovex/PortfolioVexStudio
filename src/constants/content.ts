@@ -177,6 +177,7 @@ export const CONTENT = {
         stack: ["HTML", "CSS", "JavaScript", "PHP", "SQL", "React", "Tailwind", "WordPress", "Bootstrap", "Node.js", "Python"],
         portfolio: "https://nicolasaguirrescode.com/",
         cv: "/cv/NicolasFabian_Aguirres.pdf",
+        whatsapp: "https://wa.me/542615349682",
       },
       {
         name: "Nicolás Ozan",
@@ -195,6 +196,7 @@ export const CONTENT = {
         stack: ["HTML", "CSS", "JavaScript", "PHP", "SQL", "Figma", "Bootstrap", "IA"],
         portfolio: "",
         cv: "",
+        whatsapp: "https://wa.me/542613612803",
       },
       {
         name: "Mauricio Velazquez",
@@ -213,6 +215,7 @@ export const CONTENT = {
         stack: ["PostgreSQL", "MongoDB", "MySQL", "Node.js", "Python", "Docker", "AWS", "React", "Next.js", "TypeScript"],
         portfolio: "",
         cv: "/cv/Mauricio_Velazquez_CV.pdf",
+        whatsapp: "https://wa.me/542612057360",
       },
     ],
   },
