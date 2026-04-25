@@ -33,6 +33,8 @@ function App() {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     });
 
+    (window as any).lenis = lenis;
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -42,6 +44,7 @@ function App() {
 
     return () => {
       lenis.destroy();
+      (window as any).lenis = undefined;
     };
   }, [loading]);
 

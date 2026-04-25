@@ -25,7 +25,13 @@ const Navbar = () => {
   const handleNavClick = (href: string) => {
     if (!isHome) return;
     const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (el) {
+      if ((window as any).lenis) {
+        (window as any).lenis.scrollTo(el);
+      } else {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   };
 
   return (
@@ -79,10 +85,11 @@ const Navbar = () => {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-cream"
+          className="md:hidden w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-cream active:scale-95 transition-transform"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label="Menu"
         >
-          {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
@@ -90,12 +97,12 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden overflow-hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="md:hidden fixed inset-0 z-[110] top-[70px] pointer-events-none"
           >
-            <div className="glass-strong mx-4 mt-3 rounded-3xl p-8 flex flex-col gap-6">
+            <div className="glass-strong mx-4 rounded-3xl p-8 flex flex-col gap-6 pointer-events-auto">
               {CONTENT.nav.links.map((link) => (
                 isHome ? (
                   <button
@@ -122,7 +129,11 @@ const Navbar = () => {
                 onClick={() => {
                   setIsOpen(false);
                   if (isHome) {
-                    document.querySelector('#contacto')?.scrollIntoView({ behavior: 'smooth' });
+                    const el = document.querySelector('#contacto');
+                    if (el) {
+                      if ((window as any).lenis) (window as any).lenis.scrollTo(el);
+                      else el.scrollIntoView({ behavior: 'smooth' });
+                    }
                   } else {
                     window.location.href = '/#contacto';
                   }
